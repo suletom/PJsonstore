@@ -46,7 +46,7 @@ TESTFILES= \
 
 # Test Object Files
 TESTOBJECTFILES= \
-	${TESTDIR}/test.o
+	${TESTDIR}/tests/simpletest.o
 
 # C Compiler Flags
 CFLAGS=
@@ -74,7 +74,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libpjsonstore.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libpjsonstore.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libpjsonstore.a
 
-${OBJECTDIR}/jsmn.o: jsmn.c 
+${OBJECTDIR}/jsmn.o: jsmn.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jsmn.o jsmn.c
@@ -86,15 +86,15 @@ ${OBJECTDIR}/jsmn.o: jsmn.c
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/test.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/simpletest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   
 
 
-${TESTDIR}/test.o: test.cpp 
-	${MKDIR} -p ${TESTDIR}
+${TESTDIR}/tests/simpletest.o: tests/simpletest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/test.o test.cpp
+	$(COMPILE.cc) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/simpletest.o tests/simpletest.cpp
 
 
 ${OBJECTDIR}/jsmn_nomain.o: ${OBJECTDIR}/jsmn.o jsmn.c 
@@ -122,7 +122,6 @@ ${OBJECTDIR}/jsmn_nomain.o: ${OBJECTDIR}/jsmn.o jsmn.c
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libpjsonstore.a
 
 # Subprojects
 .clean-subprojects:

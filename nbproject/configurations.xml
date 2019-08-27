@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="97">
+<configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -21,7 +21,7 @@
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
       <logicalFolder name="f1" displayName="test" projectFiles="true" kind="TEST">
-        <itemPath>test.cpp</itemPath>
+        <itemPath>tests/simpletest.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -64,7 +64,7 @@
       </item>
       <item path="pjsonstore.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="test.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/simpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -110,7 +110,7 @@
       </item>
       <item path="pjsonstore.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="test.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/simpletest.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
