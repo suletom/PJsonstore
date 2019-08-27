@@ -1,5 +1,5 @@
 /* 
- * File:   simpletest.cpp
+ * File:   test.cpp
  * Author: suletom
  *
  * Created on 2019. augusztus 6., 16:43
@@ -157,12 +157,9 @@ int main(int argc, char** argv) {
 
     i++;
 
-    //not empty ajsonstore!!! Ok OR NOT?
-
-    //set indexed flags on not empty list, or any case
-
     std::cout << "%SUITE_FINISHED% time=0" << std::endl;
 
     return (EXIT_SUCCESS);
 }
+
 
