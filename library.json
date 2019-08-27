@@ -1,0 +1,23 @@
+{
+  "name": "PJsonstore",
+  "keywords": "json, configuration, array",
+  "description": "minimal PHP array like structure with JSON serialization/deserialization that can provide an easily usable global configuration object",
+  "homepage": "https://github.com/suletom/PJsonstore",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suletom/PJsonstore.git"
+  },
+  "version": "0.1",
+  "authors": {
+    "name": "suletom"
+    
+  },
+  "exclude": [
+    "fuzzing",
+    "scripts",
+    "test",
+    "third-party"
+  ],
+  "frameworks": "arduino",
+  "platforms": "*"
+}
