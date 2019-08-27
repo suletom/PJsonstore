@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=PJsontore
+PROJECTNAME=PJsonstore
 
 # Active Configuration
 DEFAULTCONF=Debug

@@ -1,5 +1,5 @@
-build/Debug/GNU-Linux/tests/test.o: test.cpp PJsonstore.h jsmn.h
+build/Debug/GNU-Linux/tests/test.o: test.cpp pjsonstore.h jsmn.h
 
-PJsonstore.h:
+pjsonstore.h:
 
 jsmn.h:
