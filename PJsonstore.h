@@ -37,7 +37,7 @@ int get_size() Gets number of elements
 
 int has_key(string | int)
  
-int get_type() Gets type:  PJT_NULL = 6, PJT_BOOLEAN = 3, PJT_INTEGER = 2, PJT_FLOAT = 5,  PJT_DOUBLE = 4,  PJT_STRING = 1, PJT_ARRAY = 0,
+int get_type() Gets type:  PJT_NULL = 6, PJT_BOOLEAN = 3, PJT_INTEGER = 2, PJT_FLOAT = 5(not working),  PJT_DOUBLE = 4,  PJT_STRING = 1, PJT_ARRAY = 0,
 
 void add(string | int | empty)  Adds an array/object to the "list" like php's $array[] operator, with key or with index.
 
@@ -65,7 +65,7 @@ _pj_value_holder get_value() Gets value struct, can be accessed like (example: g
 #endif
 #include <stdlib.h>
 #include <stdarg.h>
-#include <typeinfo>
+//#include <typeinfo>
 #include <limits.h>
 #include <errno.h>
 #include "jsmn.h"
@@ -109,7 +109,7 @@ typedef enum __pj_elem_type {
     PJT_INTEGER = 2,
     PJT_BOOLEAN = 3,
     PJT_DOUBLE = 4,
-    PJT_FLOAT = 5,
+    //PJT_FLOAT = 5,
     PJT_NULL = 6
 
 } _pj_elem_type;
@@ -124,7 +124,7 @@ typedef struct __pj_value_holder {
         int pj_int;
         bool pj_bool;
         double pj_double;
-        float pj_float;
+        //float pj_float;
         _pjBase* pj_array;
     };
 
@@ -597,14 +597,14 @@ protected:
                     break;
                 case PJT_INTEGER:
 
-                    //printf("%d",pj_childs[i]->get_value().pj_int);
                     pj_simprintf("%d", elem->get_value().pj_int);
                     break;
-                case PJT_FLOAT:
+                /*case PJT_FLOAT:
 
                     pj_simprintf("%g", elem->get_value().pj_float);
 
                     break;
+                 */ 
                 case PJT_DOUBLE:
 
                     pj_simprintf("%g", elem->get_value().pj_double);
@@ -870,7 +870,7 @@ protected:
         }
 
         //char tmpstring[]="3.4";
-        //check types: boolean, null, int, float, double
+        //check types: boolean, null, int, double
         if (strcmp(tmpstring, "true") == 0) {
             (*iti) = true;
             return 1;
@@ -903,7 +903,7 @@ protected:
             //printf("Result is: %ld",result);
         }
 
-
+        /* disabled: source of problems...
         end = tmpstring;
         errno = 0;
         float f = strtof(tmpstring, &end);
@@ -913,6 +913,7 @@ protected:
             (*iti) = f;
             return 1;
         }
+        */
 
         end = tmpstring;
         errno = 0;
@@ -964,9 +965,10 @@ pj_elem_data::pj_elem_data(pj_elem_data& pr) {
         case PJT_BOOLEAN:
             pj_intholder.pj_bool = pr.get_value().pj_bool;
             break;
-        case PJT_FLOAT:
+        /*case PJT_FLOAT:
             pj_intholder.pj_float = pr.get_value().pj_float;
             break;
+         */
         case PJT_DOUBLE:
             pj_intholder.pj_double = pr.get_value().pj_double;
             break;
@@ -1110,10 +1112,11 @@ pj_elem_data& pj_elem_data::operator=(pj_elem_data& pr) {
         case PJT_BOOLEAN:
             pj_intholder.pj_bool = pr.get_value().pj_bool;
             break;
-
+        /*    
         case PJT_FLOAT:
             pj_intholder.pj_float = pr.get_value().pj_float;
             break;
+         */ 
 
         case PJT_DOUBLE:
             pj_intholder.pj_double = pr.get_value().pj_double;
@@ -1183,8 +1186,8 @@ pj_elem_data& pj_elem_data::operator=(const bool& pr) {
 pj_elem_data& pj_elem_data::operator=(const float& pr) {
 
     _destroy();
-    pj_intholder.type = PJT_FLOAT;
-    pj_intholder.pj_float = pr;
+    pj_intholder.type = PJT_DOUBLE;
+    pj_intholder.pj_double = pr;
 
     return (*this);
 }
@@ -1268,4 +1271,3 @@ int pj_elem_data::is_indexed() {
 
 
 #endif /* PJSONSTORE_h */
-
