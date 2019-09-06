@@ -12,7 +12,50 @@ This project is minimalistic header library for arduino. The library uses a modi
   
     #include <PJsonstore.h>
 
-    
+      
+  #include <PJsonstore.h>
+  
+  pjsonstore config;
+
+  //handy macro to define json object string
+  String confdef = R"({
+  "wifipw": ["12345678","WIFI password"],
+  "ssid": ["device","SSID"]
+  })";
+  
+  void setup() {
+
+    String output;
+
+    Serial.begin(9600);
+  
+    //provide the expected number of json tokens,
+    if (config.from_json(64, confdef.c_str())){
+      //success
+      Serial.print("Get pw value: ");
+      Serial.println(config["wifipw"][0].get_value().pj_string);
+
+      Serial.print("Convert back to json: ");
+      config.to_json(output);
+      Serial.println(output);
+      output="";
+      
+      config["wifipw"][0]="new string value";
+
+      Serial.print("Convert back, after modifying pw value: ");
+      config.to_json(output);
+      Serial.println(output);  
+            
+    }else{
+      //failure, perhaps you need more tokens?
+    }
+
+  }
+  
+  void loop() {
+  
+  } 
+  
  
   
   
