@@ -22,35 +22,35 @@ This project is minimalistic header library for arduino. The library uses a modi
   
 	void setup() {
 
-    String output;
+		String output;
 
-    Serial.begin(9600);
+		Serial.begin(9600);
   
-    //provide the expected number of json tokens,
-    if (config.from_json(64, confdef.c_str())){
-      //success
-      Serial.print("Get pw value: ");
-      Serial.println(config["wifipw"][0].get_value().pj_string);
+		//provide the expected number of json tokens,
+		if (config.from_json(64, confdef.c_str())){
+			//success
+			Serial.print("Get pw value: ");
+			Serial.println(config["wifipw"][0].get_value().pj_string);
 
-      Serial.print("Convert back to json: ");
-      config.to_json(output);
-      Serial.println(output);
-      output="";
+			Serial.print("Convert back to json: ");
+			config.to_json(output);
+			Serial.println(output);
+			output="";
       
-      config["wifipw"][0]="new string value";
+			config["wifipw"][0]="new string value";
 
-      Serial.print("Convert back, after modifying pw value: ");
-      config.to_json(output);
-      Serial.println(output);  
+			Serial.print("Convert back, after modifying pw value: ");
+			config.to_json(output);
+			Serial.println(output);  
             
-    }else{
-      //failure, perhaps you need more tokens?
-    }
+	}else{
+		//failure, perhaps you need more tokens?
+	}
 
 	}
   
 	void loop() {
-  
+	
 	} 
   
  
