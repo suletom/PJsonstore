@@ -53,7 +53,8 @@ This project is minimalistic header library for arduino. The library uses a modi
 	
 		} 	 
   
- 
+# Known issues
+-No real UTF8 support (needs much more code)
   
   
   
