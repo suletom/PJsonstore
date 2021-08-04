@@ -187,7 +187,7 @@ public:
 
     char* get_key();
 
-    char set_key(const char* key);
+    int set_key(const char* key);
 
     _pj_elem_type get_type();
 
@@ -426,7 +426,7 @@ protected:
 
     //if array is indexed with continous numeric keys
 
-    int set_indexed(int newindex) {
+    void set_indexed(int newindex) {
         if (pj_numkeys == 0 && newindex >= 0) {
             //printf("0 -> 1");
             pj_numkeys = 1;
@@ -995,7 +995,7 @@ char* pj_elem_data::get_key() {
     return (pj_intholder.key);
 }
 
-char pj_elem_data::set_key(const char* key) {
+int pj_elem_data::set_key(const char* key) {
     int ind;
 
     int isdigit = 0;
