@@ -6,7 +6,7 @@ This project is minimalistic header library for arduino. The library uses a modi
 
 # Usage/examples
 
-1. Download the [latest](https://github.com/suletom/PJsonstore/releases/download/v1.0.0/PJsonstore_v1.0.0.zip) release, and extract to your Arduino libraries directory!
+1. Download the [latest](https://github.com/suletom/PJsonstore/releases/download/v1.0.1/PJsonstore.zip) release, and extract to your Arduino libraries directory!
 2. Include the lib in your sketch. See the example!
 3. Basic usage example:
   
