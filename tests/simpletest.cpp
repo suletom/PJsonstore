@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <iostream>
 #define pjsontest 1
-#include "pjsonstore.h"
+#include "PJsonstore.h"
 
 void test(int test_number, int tokens, const char * jsonstring, int retval, int check_same) {
 
@@ -111,6 +111,9 @@ int main(int argc, char** argv) {
 
     //primitives in array value first
     test(i++, 128, "[1,\"as\",1.2,null,false,false]", 1, 1);
+    
+    //out of range
+    test(i++, 128, "{\"outofrange\":65234134523462345123452354}", 1, 0);
 
 
     std::cout << "%TEST_STARTED% test" << i << " (simpletest)" << std::endl;
