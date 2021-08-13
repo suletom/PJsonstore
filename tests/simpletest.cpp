@@ -112,7 +112,7 @@ int main(int argc, char** argv) {
     //primitives in array value first
     test(i++, 128, "[1,\"as\",1.2,null,false,false]", 1, 1);
     
-    //out of range
+    //out of range -> value truncated
     test(i++, 128, "{\"outofrange\":65234134523462345123452354}", 1, 0);
 
 
@@ -159,6 +159,42 @@ int main(int argc, char** argv) {
     std::cout << "%TEST_FINISHED% time=0 test" << i << " (simpletest)" << std::endl;
 
     i++;
+        
+    std::cout << "%TEST_STARTED% test" << i << " (simpletest)" << std::endl;
+    pjsonstore tst;
+    tst.from_json(128,"{\"key\":35734523572412526546723452346246746456745656}");
+    
+    if (tst["key"].get_type()!=PJT_DOUBLE) {
+        std::cout << "%TEST_FAILED% time=0 testname=test" << i << " (simpletest) message=outofrange, type:" << tst["key"].get_type() << std::endl;
+    }
+    std::cout << "%TEST_FINISHED% time=0 test" << i << " (simpletest)" << std::endl;
+
+    i++;
+    
+         
+    std::cout << "%TEST_STARTED% test" << i << " (simpletest)" << std::endl;
+    pjsonstore tst2;
+    tst2.from_json(128,"{\"key\":35734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745656}");
+    
+    if (tst2["key"].get_type()!=PJT_NULL) {
+        std::cout << "%TEST_FAILED% time=0 testname=test" << i << " (simpletest) message=outofrange, type:" << tst2["key"].get_type() << std::endl;
+    }
+    std::cout << "%TEST_FINISHED% time=0 test" << i << " (simpletest)" << std::endl;
+
+    i++;
+
+    std::cout << "%TEST_STARTED% test" << i << " (simpletest)" << std::endl;
+    pjsonstore tst3;
+    tst3.from_json(128,"{\"key\":\"35734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745635734523572412526546723452346246746456745656\"}");
+    
+    if (tst3["key"].get_type()!=PJT_STRING) {
+        std::cout << "%TEST_FAILED% time=0 testname=test" << i << " (simpletest) message=outofrange, type:" << tst3["key"].get_type() << std::endl;
+    }
+    std::cout << "%TEST_FINISHED% time=0 test" << i << " (simpletest)" << std::endl;
+
+    i++;
+
+    
 
     std::cout << "%SUITE_FINISHED% time=0" << std::endl;
 
