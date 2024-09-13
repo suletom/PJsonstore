@@ -4,7 +4,7 @@ PJSONSTORE class (main object):
 
 pj_elem_data& get_by_num(int)
  
-void empty() Deletes everthing int the object
+void empty() Deletes everything in the object
 
 void unset(); Same as empty
  
@@ -143,7 +143,7 @@ public:
 
     int get_size();
 
-    int to_json(String &s);
+    void to_json(String &s);
 
     int has_key(const char * str);
 
@@ -1250,7 +1250,7 @@ pj_elem_data& pj_elem_data::get_by_num(int i) {
     }
 }
 
-int pj_elem_data::to_json(String &s) {
+void pj_elem_data::to_json(String &s) {
 
     if (pj_intholder.type == PJT_ARRAY) {
         ((pjsonstore&) (*pj_intholder.pj_array)).to_json(s);
